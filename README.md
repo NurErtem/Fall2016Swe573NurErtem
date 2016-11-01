@@ -8,6 +8,13 @@
 
   The web app is simply designed to track calories gained and calories spent during the day. The user will be able track and monitor his progress daily, monthly and annually. The app will provide guidance, more like a refernce point, and help the user to observe his behaviour in order to try to have a healthy outlook. The application also incorporates a daily emotional rating scale. The mood tracking ability tries to bring a comprehensive view to the overall health of the individual, and distinguishes the application by deisgn from its counterparts. 
   
+* [PROJECT PLAN GUIDELINES](https://github.com/NurErtem/Fall2016Swe573NurErtem/wiki/01-project-plan-guidelines) 
+* [REQUIREMENTS DOCUMENT](https://github.com/NurErtem/Fall2016Swe573NurErtem/wiki/02-Requirements-Document) 
+* [SOFTWARE DESIGN DOCUMENT](https://github.com/NurErtem/Fall2016Swe573NurErtem/wiki/03-Software-Design-Document) 
+* [UI DESIGN](https://github.com/NurErtem/Fall2016Swe573NurErtem/wiki/04-Draft-UI-design-and-wireframe-mock-ups) 
+* [RESEARCH BIBLIOGRAPHY](https://github.com/NurErtem/Fall2016Swe573NurErtem/wiki/05-research-bibliography-and-references) 
+  
+  
 ### The repository contains the clarification and research on the following issues:
 
 * research on the things assigned in homeworks as requirements
