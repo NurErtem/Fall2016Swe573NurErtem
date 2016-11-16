@@ -1,0 +1,22 @@
+{
+  "name": "KarmaCircle",
+  "description": "",
+  "main": "App.js",
+  "authors": [
+    "Nur Ertem Ündem"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "design/html/assets/plugins/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}

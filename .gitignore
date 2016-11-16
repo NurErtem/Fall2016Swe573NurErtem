@@ -1,0 +1,6 @@
+node_modules
+design/html/assets/plugins
+.DS_Store
+public/bundle.js
+x-src
+*.log
