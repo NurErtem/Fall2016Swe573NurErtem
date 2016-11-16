@@ -48,7 +48,7 @@ var Main = React.createClass({
                     <div className="container">
                         <div className="navbar-header">
                             <Link to="/" className="navbar-brand">
-                                PROJECT NAME
+                                KARMACIRCLE
                             </Link>
                         </div>
                         <ul className="nav navbar-nav pull-right">

@@ -9,7 +9,7 @@ var Index = function () {
 				 //setTimeout("", 1000);
 				 //jQuery('#revolutionul').show();
 				 
-api =  jQuery('.fullwidthabnner').revolution(
+			api =  jQuery('.fullwidthabnner').revolution(
 	                {
 	                    delay:2000,
 	                    startheight:380,

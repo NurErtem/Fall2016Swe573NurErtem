@@ -45,12 +45,14 @@ var App = function () {
     }
 
     function handleBootstrap() {
+/*
         jQuery('.carousel').carousel({
             interval: 15000,
             pause: 'hover'
         });
         jQuery('.tooltips').tooltip();
         jQuery('.popovers').popover();
+  */
     }
 
     function handleMisc() {
@@ -152,7 +154,7 @@ var App = function () {
             handleIEFixes();
             handleMisc();
             handleSearch();
-			handleTheme(); // handles style customer tool
+			handleTheme();       // handles style customer tool
             handleFancybox();
         },
 
