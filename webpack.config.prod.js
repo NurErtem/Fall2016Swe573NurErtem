@@ -3,6 +3,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var NpmInstallPlugin = require('npm-install-webpack-plugin');
 var webpack = require('webpack');
+var path = require('path');
+
 
 require("./bootstrap.config.js");
 
@@ -17,9 +19,14 @@ module.exports = {
 	],
 	resolve: {
 		alias: {
-			jquery: "jquery/src/jquery"
+			jquery: "jquery/src/jquery",
+			assets: 'design/html/assets/'
 		}
     },
+    root: [
+		path.resolve('./'),
+		path.resolve('./design/html/assets/')
+    ],
 	entry: {
 
 		app: [
@@ -27,10 +34,10 @@ module.exports = {
 			"font-awesome-webpack!./font-awesome.config.js"
 		],
 		styles: [
-			"./design/html/assets/css/reset.css",
-			"./design/html/assets/css/style-metro.css",
-			"./design/html/assets/css/style.css",
-			"./design/html/assets/css/style-responsive.css",
+			('reset.css'),
+			('style-metro.css'),
+			('style.css'),
+			('style-responsive.css'),
 		],
 /*		styles: [
 

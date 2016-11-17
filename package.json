@@ -30,7 +30,9 @@
     "react-router": "^2.6.1",
     "reactfire": "^1.0.0",
     "reactify": "^1.1.0",
+    "reset.css": "^2.0.2",
     "resolve-url-loader": "^1.6.0",
+    "style.css": "^1.0.0-alpha-8",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^2.4.0"
   },

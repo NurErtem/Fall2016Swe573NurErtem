@@ -44,10 +44,10 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	(function webpackMissingModule() { throw new Error("Cannot find module \"./design/html/assets/css/reset.css\""); }());
-	(function webpackMissingModule() { throw new Error("Cannot find module \"./design/html/assets/css/style-metro.css\""); }());
-	(function webpackMissingModule() { throw new Error("Cannot find module \"./design/html/assets/css/style.css\""); }());
-	(function webpackMissingModule() { throw new Error("Cannot find module \"./design/html/assets/css/style-responsive.css\""); }());
+	(function webpackMissingModule() { throw new Error("Cannot find module \"reset.css\""); }());
+	(function webpackMissingModule() { throw new Error("Cannot find module \"style-metro.css\""); }());
+	(function webpackMissingModule() { throw new Error("Cannot find module \"style.css\""); }());
+	(function webpackMissingModule() { throw new Error("Cannot find module \"style-responsive.css\""); }());
 
 
 /***/ }
