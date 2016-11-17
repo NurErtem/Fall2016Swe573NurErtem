@@ -5,50 +5,92 @@ var NpmInstallPlugin = require('npm-install-webpack-plugin');
 var webpack = require('webpack');
 var path = require('path');
 
-
 require("./bootstrap.config.js");
 
 module.exports = {
 	loaders: [
-		{ test: /\.jsx?$/, exclude: /(node_modules|bower_components)/, loader: 'babel' },
-		{ test: /\.css$/, loader: "style-loader!css-loader" },
-		{ test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
-		{ test: /\.(woff|woff2)$/, loader:"url?prefix=font/&limit=5000" },
-		{ test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
-		{ test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" }
+		{ test: /\.js$/, 						loaders: ['babel'], 				include: path.join(__dirname, 'app') },
+		{ test: /\.jsx?$/, 						loader: 'babel',					exclude: /(node_modules|bower_components)/ },
+		{ test: /\.css$/, 						loader: "style-loader!css-loader" },
+		{ test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, 	loader: "file" },
+		{ test: /\.(jpg|png)$/,					loaders: ['url?limit=25000'],		include: path.resolve(__dirname, 'assets/img')},
+//		{ test: /\.(woff|woff2)$/, 				loader: "url?prefix=font/&limit=5000" },
+//		{ test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, 	loader: "url?limit=10000&mimetype=application/octet-stream" },
+		{ test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
+		{ test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" },
+		{ test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, 	loader: "url?limit=10000&mimetype=image/svg+xml" },
+		{ test: /\.scss$/,						loaders: ['style', 'css?sourceMap&-restructuring&aggressiveMerging', 'autoprefixer', 'sass?sourceMap']}
+
 	],
 	resolve: {
+	    root: [
+			path.resolve('./'),
+	    ],
+	    fallback: [
+			path.resolve('./'),
+	    ],
+	    extensions: ["", ".webpack.js", ".web.js", ".js", ".css"],
 		alias: {
-			jquery: "jquery/src/jquery",
-			assets: 'design/html/assets/'
+			app: 		__dirname + "/app/App.js",
+//			jquery: 	"jquery/src/jquery",
+			jquery: 	__dirname + "/design/html/assets/plugins/jquery-1.10.1.min.js",
+			jquerymig: 	__dirname + "/design/html/assets/plugins/jquery-migrate-1.2.1.min.js",
+			back2top: 	__dirname + "/design/html/assets/plugins/back-to-top.js",
+			fancybox: 	__dirname + "/design/html/assets/plugins/fancybox/source/jquery.fancybox.js",
+			bxslider: 	__dirname + "/design/html/assets/plugins/bxslider-4/dist/jquery.bxslider.js",
+			hoverdd: 	__dirname + "/design/html/assets/plugins/hover-dropdown.js",
+			revplg: 	__dirname + "/design/html/assets/plugins/revolution_slider/rs-plugin/js/jquery.themepunch.plugins.min.js",
+			revolution: __dirname + "/design/html/assets/plugins/revolution_slider/rs-plugin/js/jquery.themepunch.revolution.min.js",
 		}
     },
-    root: [
-		path.resolve('./'),
-		path.resolve('./design/html/assets/')
-    ],
 	entry: {
 
-		app: [
-			"./app/App.js",
-			"font-awesome-webpack!./font-awesome.config.js"
-		],
 		styles: [
-			('reset.css'),
-			('style-metro.css'),
-			('style.css'),
-			('style-responsive.css'),
+//				__dirname + '/design/html/assets/css/reset.css',
+/*
+				'assets/plugins/fancybox/source/jquery.fancybox.css',
+				'assets/plugins/bxslider-4/dist/jquery.bxslider.css',
+				'assets/plugins/revolution_slider/css/rs-style.css',
+				'assets/plugins/revolution_slider/rs-plugin/css/settings.css',
+				'assets/plugins/style-metro.css',
+				'assets/plugins/style.css',
+				'assets/plugins/style-responsive.css',
+				'assets/plugins/css/themes/blue.css'
+*/
 		],
-/*		styles: [
+		vendor: [
+			"jquery",
+			"jquerymig",
+			"back2top",
+			"fancybox",
+			"bxslider",
+			"hoverdd",
+			"revplg",
+			"revolution",			
+			"lodash"
+		],
+		app: [
+			"app"
+		],
 
-			"./design/html/assets/plugins/fancybox/source/jquery.fancybox.css",
-			"./design/html/assets/plugins/font-awesome/css/font-awesome.css",
-			"./design/html/assets/plugins/bxslider/jquery.bxslider.css",
-			"./design/html/assets/plugins/revolution_slider/css/rs-style.css",
-			"./design/html/assets/plugins/revolution_slider/rs-plugin/css/settings.css",
-		]
-*/	},
+	},
 	plugins: [
+		new webpack.optimize.DedupePlugin(),
+		new webpack.optimize.OccurrenceOrderPlugin(),
+		new webpack.optimize.CommonsChunkPlugin({
+			name: "common",
+			minChunks: 2
+		}),
+		new webpack.optimize.CommonsChunkPlugin({
+			name: "styles",
+//			filename: "styles.js",
+			minChunks: Infinity,
+		}),
+		new webpack.optimize.CommonsChunkPlugin({
+			name: "vendor",
+//			filename: "vendor.js",
+			minChunks: Infinity,
+		}),
 		new webpack.ProvidePlugin({
 			'window.jQuery': 'jquery',
 			'window.$': 'jquery',
@@ -57,13 +99,18 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: '!!pug!templates/index.jade',
 			title: 'KarmaCircle',
+			headStyles: [
+			],
+			bottomScripts: [
+			],
 //			favicon: '',
 		}),
 		new ExtractTextPlugin('styles.css', {allChunks: true})
 	],
 	output: {
-		path: 'public',
-		filename: 'bundle_[chunkhash].js'
+		path: __dirname + '/public/',
+		filename: '[name].js',
+
 	},
 	devtool: 'source-map',
 	devServer: { inline: true },

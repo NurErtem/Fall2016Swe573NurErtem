@@ -1,5 +1,8 @@
 doctype html
-html
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
   head
     meta(charset='utf-8')
     title KarmaCircle | Homepage
@@ -7,29 +10,19 @@ html
     meta(content='KarmaCircle is the next generation application for nutrition and weight tracking.', name='description')
     meta(content='Nur Ertem Ündem', name='author')
     // BEGIN GLOBAL MANDATORY STYLES
-    link(rel='stylesheet', type='text/css', href='assets/plugins/fancybox/source/jquery.fancybox.css')
-    link(rel='stylesheet', type='text/css', href='assets/plugins/bxslider-4/dist/jquery.bxslider.css')
-    link(rel='stylesheet', type='text/css', media='screen', href='assets/plugins/revolution_slider/css/rs-style.css')
-    link(rel='stylesheet', type='text/css', media='screen', href='assets/plugins/revolution_slider/rs-plugin/css/settings.css')
-    link(rel='stylesheet', type='text/css', href='assets/css/style-responsive.css')
+    for sheet in htmlWebpackPlugin.options.headStyles
+        link(rel='stylesheet', type='text/css', href=sheet)
     // END GLOBAL MANDATORY STYLES
     link#style_color(rel='stylesheet', type='text/css', href='assets/css/themes/blue.css')
     link(rel='shortcut icon', href='favicon.ico')
   body
     #app
-    // BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time)
-    // BEGIN CORE PLUGINS
-    script(type='text/javascript', src='assets/plugins/jquery-1.10.1.min.js')
-    script(type='text/javascript', src='assets/plugins/jquery-migrate-1.2.1.min.js')
-    script(type='text/javascript', src='assets/plugins/back-to-top.js')
-    script(type='text/javascript', src='assets/plugins/bxslider-4/dist/jquery.bxslider.js')
-    script(type='text/javascript', src='assets/plugins/fancybox/source/jquery.fancybox.pack.js')
-    script(type='text/javascript', src='assets/plugins/hover-dropdown.js')
-    script(type='text/javascript', src='assets/plugins/revolution_slider/rs-plugin/js/jquery.themepunch.plugins.min.js')
-    script(type='text/javascript', src='assets/plugins/revolution_slider/rs-plugin/js/jquery.themepunch.revolution.min.js')
+    for scrpt in htmlWebpackPlugin.options.bottomScripts
+        script(type='text/javascript', src=scrpt)
     //if lt IE 9
       script(src='assets/plugins/respond.min.js')
-    // END CORE PLUGINS
+    script(src='assets/scripts/app.js')
+    script(src='assets/scripts/index.js')
     script(type='text/javascript').
       jQuery(document).ready(function() {
       App.init();
