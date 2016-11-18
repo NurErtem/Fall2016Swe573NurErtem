@@ -23,6 +23,11 @@ http://localhost:8080/public/
 github:
 ertemnur@gmail.com / Ritalin2016#
 
+JetBrains/webstorm:
+bohemistic / ????????????
+
+
+GITHUB INFO!
 
 React stuff
 https://stormpath.com/blog/build-a-react-app-with-user-authentication
