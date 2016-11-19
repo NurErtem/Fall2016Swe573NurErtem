@@ -6,7 +6,7 @@ var watchify = require('watchify');
 var reactify = require('reactify');
 var notifier = require('node-notifier');
 var server = require('gulp-server-livereload');
-
+[//]: <> (This is also a comment.)
 var notify = function(error) {
   var message = 'In: ';
   var title = 'Error: ';
