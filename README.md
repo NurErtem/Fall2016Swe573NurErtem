@@ -13,6 +13,26 @@
 * [SOFTWARE DESIGN DOCUMENT](https://github.com/NurErtem/Fall2016Swe573NurErtem/wiki/03-Software-Design-Document) 
 * [UI DESIGN](https://github.com/NurErtem/Fall2016Swe573NurErtem/wiki/04-Draft-UI-design-and-wireframe-mock-ups) 
 * [RESEARCH BIBLIOGRAPHY](https://github.com/NurErtem/Fall2016Swe573NurErtem/wiki/05-research-bibliography-and-references) 
+
+### The below technologies and tools are used in making of this web app: 
+
+* Python: the language of the Django framework
+
+* Django: web framework
+
+* SQLite: default DB of Django is used 
+
+* Zen Hub: time management tool
+
+* DrawIO: mockups and SDD diagrams
+
+* PyCharm: IDE for Django environment
+
+* WebStorm: IDE for HTML, Javascript,CSS, ajax etc development
+
+* Postman: RESTful API browser
+
+* Docker: to be used for clean deployment environment
   
   
 ### The repository contains the clarification and research on the following issues:
