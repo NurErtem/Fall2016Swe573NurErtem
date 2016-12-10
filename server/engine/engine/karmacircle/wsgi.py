@@ -1,5 +1,5 @@
 """
-WSGI config for fitplus project.
+WSGI config forKarmaCircle project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
