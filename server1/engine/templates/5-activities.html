@@ -222,6 +222,20 @@
 				<!-- END PAGE HEADER-->
 				<!-- BEGIN PAGE CONTENT-->
 				<div class="row-fluid">
+    <form action="/core/activities" method="POST" accept-charset="utf-8">
+
+					{% csrf_token %}
+<div style="display:none;">
+					{% for hidden in form.hidden_fields %}
+						{{ hidden }}
+					{% endfor %}
+
+					{% for field in form.visible_fields %}
+						{{ field.errors }}
+						{{ field.help_text }}
+						{{ field }}
+					{% endfor %}
+</div>
 
 					<div class="span3">
 						<div class="portlet box blue">
@@ -233,7 +247,7 @@
 								<div class="control-group">
 									<div class="controls">
 										<div class="date-picker" id="datePicky" data-date="10/2012" data-date-format="dd/mm/yyyy" data-date-viewmode="years" data-date-minviewmode="months"></div>
-										<input class="m-wrap m-ctrl-medium date-picker" id="hiddenDate" style="display:none;" readonly size="16" type="text" value="" />
+										<input class="m-wrap m-ctrl-medium date-picker" name="for_date" id="hiddenDate" style="display:none;" readonly size="16" type="text" value="" />
 									</div>
 								</div>
 							</div>
@@ -246,14 +260,10 @@
 								<div class="caption"><i class="icon-edit"></i>Activities</div>
 							</div>
 							<div class="portlet-body calKnob">
-								<select class="selectpicker" data-width="auto" data-size="false" data-show-icon="true" data-tick-icon="glyphicon-ok" data-title="Select an activity" data-live-search="true">
-									<option>walking</option>
-									<option>running</option>
-									<option>swimming</option>
-									<option>tradmill</option>
-									<option>crossfit</option>
-									<option>basketball</option>
-									<option>cycling</option>
+								<select class="selectpicker" id="activityPicker"  data-width="auto" data-size="false" data-show-icon="true" data-tick-icon="glyphicon-ok" data-title="Select an activity" data-live-search="true">
+								    {% for act in activities %}
+									<option value="{{ act.title }}:{{ act.calories }}">{{ act.title }}</option>
+								    {% endfor %}
 								</select>
 							</div>
 						</div>
@@ -274,12 +284,12 @@
 									<input type="text" class="form-control" id="burnedCal" value="" readonly="readonly" disabled="disabled" /> calories
 								</div>
 								<div class="form-group pull-right">
-									<button type="button" class="btn red">Track Activity</button>
+									<button type="submit" class="btn red">Track Activity</button>
 								</div>
 							</div>
 						</div>
 					</div>
-
+</form>
 				</div>
 				<!-- END PAGE CONTENT-->
 			</div>
@@ -301,19 +311,19 @@
 	</div>
 	<!-- END FOOTER -->
 	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-	<!-- BEGIN CORE PLUGINS -->   <script src="{% static 'assets/plugins/jquery-1.10.1.min.js" type="text/javascript"></script>
-	<script src="{% static 'assets/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+	<!-- BEGIN CORE PLUGINS -->   <script src="{% static 'assets/plugins/jquery-1.10.1.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'assets/plugins/jquery-migrate-1.2.1.min.js' %}" type="text/javascript"></script>
 	<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
-	<script src="{% static 'assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>      
-	<script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="{% static 'assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js' %}" type="text/javascript"></script>      
+	<script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}" type="text/javascript"></script>
 	<script src="{% static 'assets/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js" type="text/javascript" ></script>
 	<!--[if lt IE 9]>
 	<script src="{% static 'assets/plugins/excanvas.min.js' %}"></script>
 	<script src="{% static 'assets/plugins/respond.min.js' %}"></script>  
 	<![endif]-->   
-	<script src="{% static 'assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-	<script src="{% static 'assets/plugins/jquery.blockui.min.js" type="text/javascript"></script>  
-	<script src="{% static 'assets/plugins/jquery.cookie.min.js" type="text/javascript"></script>
+	<script src="{% static 'assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'assets/plugins/jquery.blockui.min.js' %}" type="text/javascript"></script>  
+	<script src="{% static 'assets/plugins/jquery.cookie.min.js' %}" type="text/javascript"></script>
 	<script src="{% static 'assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
 	<!-- END CORE PLUGINS -->
 	<!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -325,19 +335,32 @@
 	<script type="text/javascript" src="{% static 'assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.js' %}"></script>
 	<script type="text/javascript" src="{% static 'assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.js' %}"></script>
 	<script type="text/javascript" src="{% static 'assets/plugins/bootstrap-select/dist/js/bootstrap-select.min.js' %}"></script>
-END PAGE LEVEL PLUGINS -->
+
 	<script type="text/javascript" src="{% static 'assets/scripts/back/app.js' %}"></script>
 
 	<script>
+
 		jQuery(document).ready(function() {
+			$("input[name='for_date']").val(
+				$('#datePicky').datepicker('getFormattedDate')
+			);
+			$("input[name='is_active']").val('true');
+			$("input[name='userId']").val(1);
 		   App.init();
 			$('#datePicky').datepicker();
 			$('#datePicky').on("changeDate", function() {
 				$('#hiddenDate').val(
 					$('#datePicky').datepicker('getFormattedDate')
 				);
+				$("input[name='for_date']").val(
+					$('#datePicky').datepicker('getFormattedDate')
+				);
 			});
 			$('.selectpicker').selectpicker('show');
+			$('#duration').on('change', function(){
+				$("input[name='calories'], #burnedCal").val(Math.round( $('#activityPicker').val().split(':')[1] / 100 * $(this).val()));
+				$("input[name='activity']").val($('#activityPicker').val().split(':')[0])
+			});
 		});
 	</script>
 	<!-- END JAVASCRIPTS -->

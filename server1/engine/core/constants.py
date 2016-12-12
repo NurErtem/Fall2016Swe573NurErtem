@@ -1,11 +1,11 @@
 
 GENDERS = (
-    ('M', 'MALE'),
-    ('F', 'FEMALE'),
+	('M', 'MALE'),
+	('F', 'FEMALE'),
 )
 
 FEELINGS = (
-    ('G', 'Good'),
-    ('N', 'Normal'),
-    ('B', 'Bad')
+	('G', 'Good'),
+	('N', 'Normal'),
+	('B', 'Bad')
 )

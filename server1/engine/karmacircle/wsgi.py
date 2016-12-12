@@ -1,5 +1,5 @@
 """
-WSGI config forKarmaCircle project.
+WSGI config for KarmaCircle project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
