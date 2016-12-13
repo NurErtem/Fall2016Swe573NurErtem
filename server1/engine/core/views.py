@@ -134,23 +134,6 @@ def profile(request):
 		'height': 175,
 	}
 
-	if request.method == "POST":
-
-		form = saveProfile(request.POST)
-
-		if form.is_valid():
-			form.save()
-
-			return render(request, '3-userinfo.html', {
-				'form': form,
-				'menu_items': menu_items,
-				'profile': profile,
-			})
-		else:
-			print(form.errors)
-	else:
-		form = saveProfile()
-
 	return render(request, '3-userinfo.html', {
 		'form': form,
 		'profile': profile,
