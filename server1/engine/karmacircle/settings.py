@@ -25,7 +25,7 @@ SECRET_KEY = '_)4el%hc4_wx5&-##zawgnnl2h=q6#z$4u!t+g_s$g9+ve)-yv'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['52.213.98.181']
 
 EMBEDLY_KEY = '08ffc24cb3574029a660a34fc28842a3'
 
