@@ -205,6 +205,8 @@
 					</div>
 					<!-- END PAGE HEADER-->
 					<!-- BEGIN PAGE CONTENT-->
+					<form action="/core/profile" method="POST" accept-charset="utf-8">
+					{% csrf_token %}
 					<div class="row-fluid">
 						<div class="span12">
 							<div class="portlet box green">
@@ -220,7 +222,7 @@
 												<div class="control-group">
 													<label class="control-label">First Name</label>
 													<div class="controls">
-														<input type="text" class="m-wrap span12" placeholder="{{ profile.name }}">
+														<input type="text" name="first_name" class="m-wrap span12" placeholder="{{ profile.name }}">
 													</div>
 												</div>
 											</div>
@@ -229,7 +231,7 @@
 												<div class="control-group"><!-- if error: add 'error' to the class -->
 													<label class="control-label">Last Name</label>
 													<div class="controls">
-														<input type="text" class="m-wrap span12" placeholder="{{ profile.surname }}">
+														<input type="text" name="last_name" class="m-wrap span12" placeholder="{{ profile.surname }}">
 														<!--<span class="help-block">This field has error.</span>-->
 													</div>
 												</div>
@@ -242,9 +244,9 @@
 												<div class="control-group">
 													<label class="control-label">Gender</label>
 													<div class="controls">
-														<select class="m-wrap span12">
-															<option value="">Male</option>
-															<option value="">Female</option>
+														<select name="gender" class="m-wrap span12">
+															<option value="m">Male</option>
+															<option value="f">Female</option>
 														</select>
 													</div>
 												</div>
@@ -254,7 +256,7 @@
 												<div class="control-group">
 													<label class="control-label" >Date of Birth</label>
 													<div class="controls">
-														<input type="text" class="m-wrap span12" id="userBirth" placeholder="dd/mm/yyyy" value={{ profile.birth }}>
+														<input type="text" name="birth_date" class="m-wrap span12" id="userBirth" placeholder="dd/mm/yyyy" value={{ profile.birth }}>
 													</div>
 												</div>
 											</div>
@@ -267,7 +269,7 @@
 												<div class="control-group">
 													<label class="control-label">Weight</label>
 													<div class="controls">
-														<input type="text" class="m-wrap span12" id="userW" value={{ profile.weight }}> 
+														<input type="text" name="weight" class="m-wrap span12" id="userW" value={{ profile.weight }}> 
 													</div>
 												</div>
 											</div>
@@ -276,7 +278,7 @@
 												<div class="control-group">
 													<label class="control-label">Calculated BMI</label>
 													<div class="controls">
-														<input type="text"  class="m-wrap span12" id="userBMI" value=""> 
+														<input type="text" name="bmi" class="m-wrap span12" id="userBMI" value=""> 
 													</div>
 												</div>
 											</div>
@@ -288,7 +290,7 @@
 												<div class="control-group">
 													<label class="control-label">Height</label>
 													<div class="controls">
-														<input type="text" class="m-wrap span12" id="userH" value="{{ profile.height }}"> 
+														<input type="text" name="height" class="m-wrap span12" id="userH" value="{{ profile.height }}"> 
 													</div>
 												</div>
 											</div>
@@ -297,7 +299,7 @@
 												<div class="control-group">
 													<label class="control-label">Calculated BM rate</label>
 													<div class="controls">
-														<input type="text" id="userBMR" class="m-wrap span12"> 
+														<input type="text" name="bmr" id="userBMR" class="m-wrap span12"> 
 													</div>
 												</div>
 											</div>
@@ -315,6 +317,7 @@
 
 						</div>
 					</div>
+					</form>
 					<!-- END PAGE CONTENT-->
 				</div>
 				<!-- END PAGE CONTAINER--> 

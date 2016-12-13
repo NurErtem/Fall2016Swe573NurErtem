@@ -116,20 +116,10 @@ def mood(request):
 	})
 
 
-def timeline(request):
-	menu_items = menu.get_menu_items('Timeline')
-
-	intakes = CalorieInput.objects.all()
-	outtakes = CalorieOutput.objects.all()
-
-	return render(request, 'timeline.html', {
-		'menu_items': menu_items,
-		'intakes': intakes,
-		'outtakes': outtakes
-	})
-
-
 def profile(request):
+
+	context = RequestContext(request)
+
 	menu_items = menu.get_menu_items('Profile')
 
 	profile = {
@@ -142,13 +132,31 @@ def profile(request):
 		'bmi': 0,
 		'weight': 70,
 		'height': 175,
-
 	}
 
+	if request.method == "POST":
+
+		form = saveProfile(request.POST)
+
+		if form.is_valid():
+			form.save()
+
+			return render(request, '3-userinfo.html', {
+				'form': form,
+				'menu_items': menu_items,
+				'profile': profile,
+			})
+		else:
+			print(form.errors)
+	else:
+		form = saveProfile()
+
 	return render(request, '3-userinfo.html', {
+		'form': form,
 		'profile': profile,
 		'menu_items': menu_items
-	})
+	}, context)
+
 
 def settings(request):
 	return render(request, 'temp/__settings.html')

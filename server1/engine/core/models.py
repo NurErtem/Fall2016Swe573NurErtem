@@ -39,9 +39,11 @@ class UserProfile(RootModel):
 	height = models.IntegerField(null=True, blank=True)
 	weight = models.DecimalField(max_digits=3, decimal_places=1, null=True)
 	gender = models.CharField(max_length=1, choices=constants.GENDERS)
-	note = models.TextField(max_length=200)
+	first_name = models.CharField(max_length=100)
+	last_name = models.CharField(max_length=100)
 
-	bmi = models.DecimalField(max_digits=4, decimal_places=1, null=True)
+	bmi = models.IntegerField(null=True, blank=True)
+	bmr = models.IntegerField(null=True, blank=True)
 
 	class Meta:
 		ordering = ['create_date']
