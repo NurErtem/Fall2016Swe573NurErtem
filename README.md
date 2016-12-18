@@ -16,13 +16,17 @@
 
 ### The below technologies and tools are used in making of this web app: 
 
-* Python: the language of the Django framework
+* Python 3: the language of the Django framework
 
-* Django: web framework
+* Django 1.10.4: web framework
 
 * SQLite: default DB of Django is used 
 
 * Zen Hub: time management tool
+
+* MS Project 2016: Project management tool 
+
+* GitHUb tags, issues utilized as tasks, milestones in line with the project plan  
 
 * DrawIO: mockups and SDD diagrams
 
@@ -34,17 +38,21 @@
 
 * GitHub Desktop: to push and pull local dev files to github 
 
+* PIP 9.0.1: pyhton package index 
+
+* GIT: command line interface for version control 
+
 * PuttyGen SSH key generator utility: AWS pem to pkk conversion on windows
 
 * Putty: connecting to the AWS web server 
 
 * WinSCP: synch files between AWS and local 
 
-* AWS web interface: deployment environment 
+* AWS web interface: deployment environment: EC2, VPC, IAM, CODEDEPLOY
 
 * AWS Command Line Interface 
 
-* Under AWS: Ubuntu 16.04 and 
+* Under AWS: Ubuntu 16.04
 
 * Under AWS: Apache2 
 
