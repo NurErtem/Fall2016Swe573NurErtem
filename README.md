@@ -26,14 +26,31 @@
 
 * DrawIO: mockups and SDD diagrams
 
-* PyCharm: IDE for Django environment
+* PyCharm: IDE for Django environment back end develeopment
 
-* WebStorm: IDE for HTML, Javascript,CSS, ajax etc development
+* WebStorm: IDE for HTML, Javascript,CSS, ajax etc front end development
 
 * Postman: RESTful API browser
 
+* GitHub Desktop: to push and pull local dev files to github 
+
+* PuttyGen SSH key generator utility: AWS pem to pkk conversion on windows
+
+* Putty: connecting to the AWS web server 
+
+* WinSCP: synch files between AWS and local 
+
+* AWS web interface: deployment environment 
+
+* AWS Command Line Interface 
+
+* Under AWS: Ubuntu 16.04 and 
+
+* Under AWS: Apache2 
+
 * Docker: to be used for clean deployment environment
-  
+
+
   
 ### The repository contains the clarification and research on the following issues:
 
